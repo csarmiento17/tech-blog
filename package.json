@@ -4,7 +4,10 @@
   "description": "A CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seeds": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +28,7 @@
     "express-session": "^1.17.0",
     "handlebars": "^4.7.3",
     "mysql2": "^2.1.0",
+    "nodemon": "^2.0.12",
     "sequelize": "^5.21.5"
   }
 }
