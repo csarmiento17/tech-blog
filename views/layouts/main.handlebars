@@ -19,12 +19,12 @@
     <header>    
          <nav class="navbar navbar-light bg-light m-2 px-3">
              <a href="/">&lt TechBlog /&gt</a>
+               
         {{#if loggedIn}}
-       
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
+          <a href="/dashboard">Dashboard</a>
+          <button id="logout" class="btn-no-style">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+          <a href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
