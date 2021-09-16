@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
 const { Post, User, Comment, Vote } = require("../../models");
+const withAuth = require("../../utils/auth");
 
-const postsmain = [{ id: 3, title: "Jay" }];
 // get all posts
 router.get("/", (req, res) => {
   console.log("GET ALL POSTS");
@@ -79,12 +79,11 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
-  console.log("CREATE POSTS");
-  // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+router.post("/", withAuth, (req, res) => {
+  console.log(req);
   Post.create({
     title: req.body.title,
-    comment_text: req.body.comment_text,
+    description: req.body.description,
     user_id: req.session.user_id,
   })
     .then((dbPostData) => res.json(dbPostData))
@@ -94,7 +93,7 @@ router.post("/", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
   console.log("UPDATE POST");
   Post.update(
     {
@@ -120,7 +119,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   console.log("DELETE POST");
   Post.destroy({
     where: {

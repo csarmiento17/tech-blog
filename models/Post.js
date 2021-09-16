@@ -16,14 +16,14 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    comment_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    comment_text: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    comment_id: {
+      type: DataTypes.INTEGER,
+    },
+
     user_id: {
       type: DataTypes.INTEGER,
       references: {

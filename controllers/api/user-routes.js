@@ -54,7 +54,13 @@ router.post("/", (req, res) => {
     password: req.body.password,
   })
     .then((dbUserData) => {
-      res.json(dbUserData);
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+
+        res.json(dbUserData);
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -92,7 +98,6 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  console.log("LOGOUT ROUTE");
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
