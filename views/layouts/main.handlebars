@@ -17,25 +17,28 @@
 <body>
    <div class="wrapper">
     <header>    
-         <nav class="navbar navbar-light bg-light m-2 px-3">
-             <a href="/">&lt TechBlog /&gt</a>
-               
+         <nav class="navbar bg-dark">
+             <a href="/">&lt The Tech Blog /&gt</a>
+            
         {{#if loggedIn}}
-          <a href="/dashboard">Dashboard</a>
-          <a id="logout" href="#" class="btn-no-style">Logout</a>
+           <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+             <li><a id="logout" href="#" class="btn-no-style">Logout</a></li>
+          </ul>
         {{else}}
         
-          <a href="/login">Login</a>
-          <a href="/register">Register</a>
+       <ul>
+             <li><a href="/dashboard">Dashboard</a></li>
+         <li><a href="/login">Login</a></li>
+         <li><a href="/register">Register</a></li>
+       </ul>
         {{/if}}
       </nav>
     </header>
     <main>
       {{{ body }}}
     </main>
-    <footer>
-      Copy
-    </footer>
+  
   </div>
 
   {{#if loggedIn}}
