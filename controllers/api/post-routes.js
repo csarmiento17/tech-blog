@@ -6,28 +6,7 @@ const withAuth = require("../../utils/auth");
 // get all posts
 router.get("/", (req, res) => {
   console.log("GET ALL POSTS");
-  Post.findAll({
-    attributes: [
-      "id",
-      "title",
-      "created_at",
-      // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-    ],
-    // include: [
-    //   {
-    //     model: Comment,
-    //     attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
-    //     include: {
-    //       model: User,
-    //       attributes: ["username"],
-    //     },
-    //   },
-    //   {
-    //     model: User,
-    //     attributes: ["username"],
-    //   },
-    // ],
-  })
+  Post.findAll({})
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
       res.render("homepage", { posts });
@@ -40,17 +19,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  console.log("GET POST BY ID");
   Post.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: [
-      "id",
-      "title",
-      "created_at",
-      //  [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-    ],
     include: [
       {
         model: Comment,
@@ -83,7 +55,7 @@ router.post("/", withAuth, (req, res) => {
   console.log(req);
   Post.create({
     title: req.body.title,
-    description: req.body.description,
+    content: req.body.content,
     user_id: req.session.user_id,
   })
     .then((dbPostData) => res.json(dbPostData))

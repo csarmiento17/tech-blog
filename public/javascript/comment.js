@@ -28,6 +28,26 @@ async function commentFormHandler(event) {
   }
 }
 
+async function deleteCommentHandler(commentID) {
+  //event.preventDefault();
+
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
+
+  const response = await fetch(`/api/comments/${commentID}`, {
+    method: 'DELETE'
+  });
+
+  if (response.ok) {
+    document.location.replace(`/post/${id}`);
+  } else {
+    alert(response.statusText);
+  }
+}
+
+//document.querySelector('.delete-comment-btn').addEventListener('click', deleteCommentHandler);
+
 document
   .querySelector(".comment-form")
   .addEventListener("submit", commentFormHandler);

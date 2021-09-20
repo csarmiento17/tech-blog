@@ -2,7 +2,7 @@ async function newFormHandler(event) {
   event.preventDefault();
 
   const title = document.querySelector('input[name="post-title"]').value;
-  const description = document.querySelector(
+  const content = document.querySelector(
     'textarea[name="post-desc"]'
   ).value;
 
@@ -10,7 +10,7 @@ async function newFormHandler(event) {
     method: "POST",
     body: JSON.stringify({
       title,
-      description,
+      content,
     }),
     headers: {
       "Content-Type": "application/json",

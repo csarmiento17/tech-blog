@@ -222,7 +222,12 @@ main {
   margin-bottom: 0.5%;
   opacity: 0.6;
 }
-
+.text-comment{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px;
+}
 .dashboard {
   display: flex;
   flex-direction: column;

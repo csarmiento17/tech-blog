@@ -2,13 +2,13 @@ const { Comment } = require("../models");
 
 const commentdata = [
   {
-    comment_text: "Nunc rhoncus dui vel sem.",
+    comment_text: "Wisdom is easily acquired when hiding under the bed with a saucepan on your head.",
     user_id: 1,
     post_id: 1,
   },
   {
     comment_text:
-      "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+      "Tomatoes make great weapons when water balloons aren’t available.",
     user_id: 2,
     post_id: 2,
   },
